@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Create product bootstrap</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+      <div class="container-fluid">
+        <a class="navbar-brand fw-bold" href="#">Simple header</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav ms-auto gap-3 me-lg-5">
+            <a class="btn btn-primary mt-2 mt-lg-0" href="#" role="button">Home</a>
+            <a class="nav-link" href="#">Features</a>
+            <a class="nav-link" href="#">Pricing</a>
+            <a class="nav-link" href="#">FAQs</a>
+            <a class="nav-link" href="#">About</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <main>
+      <div class="container">
+        <div class="row pt-5">
+          <div class="col-lg-9 py-5 text-center mx-auto">
+            <img src="assets/Bootstrap_logo.svg.png" alt="" class="img-thumbnail" width="80">
+            <h2 class="mt-4 mb-2">Create Product</h2>
+            <p>Below is an example form built entirely with Bootstrap’s form controls. Each required form group has a validation state that can be triggered by attempting to submit the form without completing it.</p>
+          </div>
+        </div>
+
+        <form class="row needs-validation" novalidate>
+          <div class="col-lg-7 mx-auto">
+            <h3>Detail Product</h3>
+            <div class="mb-4 col-md-6 col-7">
+              <label for="productName" class="form-label">Product Name</label>
+              <input type="text" class="form-control" id="productName" placeholder="Product Name" required>
+              <div class="valid-feedback">
+                Looks good!
+              </div>
+              <div class="invalid-feedback">
+                Please fill out this field.
+              </div>
+            </div>
+            <div class="mb-4 col-md-5 col-7">
+              <label for="productCategory" class="form-label">Product Category</label>
+              <select class="form-select" aria-label="Default select example" required>
+                <option selected>Choose...</option>
+                <option value="laptop">laptop</option>
+                <option value="monitor">monitor</option>
+                <option value="keyboard">keyboard</option>
+              </select>
+              <div class="valid-feedback">
+                Looks good!
+              </div>
+              <div class="invalid-feedback">
+                Please select a valid state.
+              </div>
+            </div>
+            <div class="mb-4 col-md-4 col-7">
+              <label for="imageProduct" class="form-label">Image Of Product</label>
+              <input class="form-control form-control-sm" type="file" id="imageProduct" required>
+              <div class="valid-feedback">
+                Looks good!
+              </div>
+              <div class="invalid-feedback">
+                Please select a image.
+              </div>
+            </div>
+            <div class="col-6">
+              <label for="productFreshness" class="form-label">Product Freshness</label>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" required>
+                <label class="form-check-label" for="flexRadioDefault1">
+                  Brand New
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" required>
+                <label class="form-check-label" for="flexRadioDefault2">
+                  Second Hank
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3" required>
+                <label class="form-check-label" for="flexRadioDefault3">
+                  Refurbished
+                </label>
+              </div>
+              <div class="valid-feedback">
+                Looks good!
+              </div>
+              <div class="invalid-feedback">
+                Please select product freshness.
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="description" class="form-label">Additional Description</label>
+              <textarea class="form-control" id="description" rows="3" required></textarea>
+              <div class="valid-feedback">
+                Looks good!
+              </div>
+              <div class="invalid-feedback">
+                Please fill out this field.
+              </div>
+            </div>
+            <div class="mb-lg-5">
+              <label for="price" class="form-label">Product Price</label>
+              <input type="number" class="form-control" id="price" placeholder="$ 1" required>
+              <div class="valid-feedback">
+                Looks good!
+              </div>
+              <div class="invalid-feedback">
+                Please fill out this field.
+              </div>
+            </div>
+            <div class="d-grid gap-2 px-4 mt-lg-5 mb-3">
+              <button class="btn btn-primary mt-5" type="submit">Submit</button>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="container-fluid">
+        <h2 class="text-center">List Product</h2>
+        <div class="row overflow-auto mb-2">
+          <div class="col-12 col-md-10">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th scope="col">No</th>
+                  <th scope="col">Product Name</th>
+                  <th scope="col">Product Category</th>
+                  <th scope="col">Image Of Product</th>
+                  <th scope="col">Product Freshness</th>
+                  <th scope="col">Additional Description</th>
+                  <th scope="col">Product Price</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">1,002</th>
+                  <td>Lorem</td>
+                  <td>ipsum</td>
+                  <td>dolor</td>
+                  <td>Brand New</td>
+                  <td>Adipiscing</td></td>
+                  <td>1</td>
+                </tr>
+                <tr>
+                  <th scope="row">1,002</th>
+                  <td>Lorem</td>
+                  <td>ipsum</td>
+                  <td>dolor</td>
+                  <td>Second Hand</td>
+                  <td>Adipiscing</td></td>
+                  <td>10</td>
+                </tr>
+                <tr>
+                  <th scope="row">1,003</th>
+                  <td>Lorem</td>
+                  <td>ipsum</td>
+                  <td>dolor</td>
+                  <td>Brand New</td>
+                  <td>Adipiscing</td></td>
+                  <td>20</td>
+                </tr>
+                <tr>
+                  <th scope="row">1,004</th>
+                  <td>Lorem</td>
+                  <td>ipsum</td>
+                  <td>dolor</td>
+                  <td>Refushed</td>
+                  <td>Adipiscing</td></td>
+                  <td>9</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="row mb-5">
+          <div class="col-lg-2 col-md-4 col-7">
+            <input type="text" class="form-control" placeholder="Search by Product Name">
+            <div class="btn-group" role="group" aria-label="Basic example">
+              <button type="button" id="btnDelete" class="btn btn-primary btn-sm" data-bs-toggle="tooltip" data-bs-placement="right" title="Delete Button">Deletion</button>
+              <button type="button" class="btn btn-outline-primary btn-sm">Search</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    </main>
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    -->
+
+    <script>
+      // Initialize tooltips globally
+      // var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+      // var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+      //   return new bootstrap.Tooltip(tooltipTriggerEl)
+      // })
+      let deleteTooltip = document.getElementById('btnDelete');  // Use correct ID without '#'
+      let tooltip = new bootstrap.Tooltip(deleteTooltip);
+
+      (function () {
+        'use strict'
+
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        var forms = document.querySelectorAll('.needs-validation')
+
+        // Loop over them and prevent submission
+        Array.prototype.slice.call(forms)
+          .forEach(function (form) {
+            form.addEventListener('submit', function (event) {
+              event.preventDefault()
+              if (!form.checkValidity()) {
+                event.preventDefault()
+                event.stopPropagation()
+              }
+
+              form.classList.add('was-validated')
+            }, false)
+          })
+      })()
+    </script>
+  </body>
+</html>
