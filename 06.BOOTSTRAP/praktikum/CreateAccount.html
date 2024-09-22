@@ -7,6 +7,7 @@
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="CSS/createaccount.css">
     <title>Create account bootstrap</title>
   </head>
   <body>
@@ -30,66 +31,64 @@
 
     <main>
       <div class="container">
-        <div class="row">
-          <div class="col-lg-4 col   pt-5 mt-5 mx-auto">
-            <div class="alert alert-danger alert-dismissible fade show" role="alert">
-              <strong>Something went wrong!</strong>
-              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-          </div>
-        </div>
         <div class="row pt-5">
           <div class="col-lg-9 py-5 text-center mx-auto">
+            <div id="alertContainer">
+              <!-- <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <strong>Something went wrong!</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div> -->
+            </div>
             <img src="assets/Bootstrap_logo.svg.png" alt="" class="img-thumbnail" width="80">
             <h2 class="mt-4 mb-2">Create Account</h2>
             <p>Below is an example form built entirely with Bootstrap’s form controls. Each required form group has a validation state that can be triggered by attempting to submit the form without completing it.</p>
           </div>
         </div>
 
-        <form class="row">
+        <form class="row needs-validation" id="createAccountForm" novalidate>
           <div class="col-lg-7 mx-auto">
             <h3>Detail Form</h3>
             <div class="row mb-3">
               <div class="col">
                 <label for="firstName" class="form-label">First name</label>
-                <input type="text" class="form-control" placeholder="First name" aria-label="First name" id="firstName">
+                <input type="text" class="form-control" placeholder="First name" aria-label="First name" id="firstName" required>
               </div>
               <div class="col">
                 <label for="lastName" class="form-label">Last name</label>
-                <input type="text" class="form-control" placeholder="Last name" aria-label="Last name" id="lastName">
+                <input type="text" class="form-control" placeholder="Last name" aria-label="Last name" id="lastName" required>
               </div>
             </div>
             <div class="row mb-3">
               <label for="username" class="form-label">Username</label>
               <div class="col input-group">
                 <span class="input-group-text" id="basic-addon1">@</span>
-                <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" id="username">
+                <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" id="username" required>
               </div>
             </div>
             <div class="row mb-3">
               <div class="col">
                 <label for="email" class="form-label">Email</label>
-                <input type="email" class="form-control" placeholder="you@example.com" aria-label="Email" id="email">
+                <input type="email" class="form-control" placeholder="you@example.com" aria-label="Email" id="email" required>
               </div>
             </div>
             <div class="row mb-3">
               <div class="col">
                 <label for="gender" class="form-label">Gender</label>
                 <div class="form-check">
-                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                  <label class="form-check-label" for="flexRadioDefault1">
+                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="gender" value="male" required>
+                  <label class="form-check-label" for="gender">
                     Male
                   </label>
                 </div>
                 <div class="form-check">
-                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
-                  <label class="form-check-label" for="flexRadioDefault2">
+                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="gender" value="female" required>
+                  <label class="form-check-label" for="gender">
                     Female
                   </label>
                 </div>
                 <div class="form-check">
-                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3">
-                  <label class="form-check-label" for="flexRadioDefault3">
+                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="gender" value="other" required>
+                  <label class="form-check-label" for="gender">
                     Other
                   </label>
                 </div>
@@ -98,7 +97,7 @@
             <div class="row mb-3">
               <div class="col">
                 <label for="adress" class="form-label">Adress</label>
-                <input type="text" class="form-control" placeholder="1234 Main St" aria-label="Adress" id="adress">
+                <input type="text" class="form-control" placeholder="1234 Main St" aria-label="Adress" id="address" required>
               </div>
             </div>
             <div class="row mb-3">
@@ -110,7 +109,7 @@
             <div class="row mb-3">
               <div class="col-5">
                 <label for="nationality" class="form-label">Nationality</label>
-                <select class="form-select" aria-label="Default select example" id="nationality">
+                <select class="form-select" aria-label="Default select example" id="nationality" required>
                   <option selected>Choose...</option>
                   <option value="Indonesia">Indonesia</option>
                   <option value="Malaysia">Malaysia</option>
@@ -122,27 +121,27 @@
               <div class="col">
                 <label for="language" class="form-label">Language Spoken :</label>
                 <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="bahasa" id="flexCheckDefault">
-                  <label class="form-check-label" for="flexCheckDefault">
+                  <input class="form-check-input" type="checkbox" value="bahasa" id="language">
+                  <label class="form-check-label" for="language">
                     Bahasa
                   </label>
                 </div>
                 <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="english" id="flexCheckChecked">
-                  <label class="form-check-label" for="flexCheckChecked">
+                  <input class="form-check-input" type="checkbox" value="english" id="language">
+                  <label class="form-check-label" for="language">
                     English
                   </label>
                 </div>
                 <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="other" id="flexCheckChecked">
-                  <label class="form-check-label" for="flexCheckChecked">
+                  <input class="form-check-input" type="checkbox" value="other" id="language">
+                  <label class="form-check-label" for="language">
                     Other
                   </label>
                 </div>
               </div>
             </div>
             <div class="d-grid gap-2 px-4 mb-3">
-              <button class="btn btn-primary mt-5" type="button">Create Account</button>
+              <button class="btn btn-primary mt-5" type="submit">Create Account</button>
             </div>
           </div>
         </form>
@@ -223,7 +222,7 @@
 
         <div class="row mb-5">
           <div class="col-lg-2 col-md-4 col-7">
-            <input type="text" class="form-control" placeholder="Search by Username">
+            <input type="text" class="form-control form-control-sm" placeholder="Search by Username">
             <div class="btn-group" role="group" aria-label="Basic example">
               <button type="button" class="btn btn-primary btn-sm">Deletion</button>
               <button type="button" class="btn btn-outline-primary btn-sm">Search</button>
@@ -234,15 +233,7 @@
       
     </main>
 
-    <!-- Optional JavaScript; choose one of the two! -->
-
-    <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-
-    <!-- Option 2: Separate Popper and Bootstrap JS -->
-    <!--
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
-    -->
+    <script src="script/create.account.js"></script>
   </body>
 </html>
