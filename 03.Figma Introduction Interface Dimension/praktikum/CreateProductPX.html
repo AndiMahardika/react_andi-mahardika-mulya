@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create product perfect pixel</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="CSS/style.css">
+</head>
+<body>
+  <nav class="navbar fixed w-full z-20 top-0 start-0 bg-white font-roboto">
+    <div class="flex flex-wrap items-center justify-between py-2 px-3">
+      <a href="" class="flex items-center">
+          <span class="self-center text-2xl font-medium whitespace-nowrap">Simple header</span>
+      </a>
+      <div class="" id="navbar-default">
+        <ul class="font-medium flex flex-row items-center gap-2 text-blue-500">
+          <li>
+            <a href="#" class="block text-base bg-blue-500 py-3 px-4 rounded-md text-white" aria-current="page">Home</a>
+          </li>
+          <li>
+            <a href="#" class="block text-base py-3 px-4">About</a>
+          </li>
+          <li>
+            <a href="#" class="block text-base py-3 px-4">Services</a>
+          </li>
+          <li>
+            <a href="#" class="block text-base py-3 px-4">Pricing</a>
+          </li>
+          <li>
+            <a href="#" class="block text-base py-3 px-4">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="mx-auto text-center flex flex-col items-center justify-center pt-20 w-[936px]">
+    <img src="assets/Bootstrap_logo.svg.png" class="mt-12" alt="" width="71px">
+    <h1 class="font-medium text-3xl mt-6 mb-2">Create Product</h1>
+    <p class="font-light text-xl mb-16">Below is an example form built entirely with Bootstrap’s form controls. Each required form group has a validation state that can be triggered by attempting to submit the form without completing it.</p>
+  </div>
+
+  <div class="w-[936px] mx-auto flex flex-col">
+    <h2 class="font-medium text-2xl mb-4">Detail Product</h2>
+    <form action="">
+      <div class="mb-8">
+        <label for="" class="block font-normal text-base mb-2">Product name</label>
+        <input type="text" class="border border-gray-400 w-[283px] px-4 py-2 rounded">
+      </div>
+
+      <div class="mb-8">
+        <label for="" class="block font-normal text-base mb-2">Product Category</label>
+        <select name="" id="" class="w-[224px] border border-gray-400 rounded px-4 py-2">
+          <option value="">Choose...</option>
+          <option value="">Laptop</option>
+          <option value="">Monitor</option>
+          <option value="">Keyboard</option>
+        </select>
+      </div>
+
+      <div class="mb-8">
+        <label for="" class="block font-normal text-base mb-2">Image of Product</label>
+        <input type="file" class="file:bg-blue-600 file:text-white file:border-0 file:py-2 file:px-3 border font-normal text-sm border-blue-600 w-[202px] rounded">
+      </div>
+
+      <div class="mb-1">
+        <label for="">Product Freshness</label>
+        <div class="flex items-center">
+          <input type="radio" name="productFreshness" id="brandnew" value="Brand New" class="mr-2">
+          <label for="brandnew">Brand New</label>
+        </div>
+        <div class="flex items-center">
+          <input type="radio" name="productFreshness" id="secondhank" value="Second Hank" class="mr-2">
+          <label for="secondhank">Second Hank</label>
+        </div>
+        <div class="flex items-center">
+          <input type="radio" name="productFreshness" id="refurbished" value="Refurbished" class="mr-2">
+          <label for="refurbished">Refurbished</label>
+        </div>
+      </div>
+    
+      <div class="mb-8">
+        <label for="" class="block font-normal text-base mb-2">Additional Description</label>
+        <textarea name="" id="" rows="6" class="border border-gray-400 w-full rounded"></textarea>
+      </div>
+    
+      <div class="mb-[136px]">
+        <label for="" class="block font-normal text-base mb-2">Product Price</label>
+        <input type="number" class="border border-gray-400 w-full px-5 py-1 rounded" placeholder="$ 1">
+      </div>
+      
+      <div class="px-[25px] mb-[10px]">
+        <button class="text-white w-full text-center bg-blue-600 py-[9px] rounded font-normal text-xl">Submit</button>
+      </div>
+    </form>
+  </div>
+  
+  <!-- <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script> -->
+</body>
+</html>
