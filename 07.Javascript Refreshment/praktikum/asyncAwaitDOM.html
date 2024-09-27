@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Generate Random Quote 2</title>
+  </head>
+  <body>
+    <div id="quote"></div>
+
+    <button onclick="getQuote()">Get Random Quote</button>
+
+    <script>
+      async function getQuote() {
+        try {
+          const quoteContainer = document.getElementById("quote");
+          quoteContainer.innerHTML = "Loading...";
+
+          await new Promise((resolve) => setTimeout(resolve, 2000));
+
+          const res = await fetch("https://dummyjson.com/quotes");
+          const data = await res.json();
+          
+          const quote =  data.quotes[Math.floor(Math.random() * data.quotes.length)];
+          quoteContainer.innerHTML = quote.quote;
+        } catch (error) {
+          console.log(error);
+          document.getElementById("quote").innerHTML = "Error fetching quote 🤒.";
+        }
+      }
+    </script>
+  </body>
+</html>

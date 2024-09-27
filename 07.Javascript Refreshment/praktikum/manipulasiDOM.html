@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Generate Random Quote 1</title>
+  </head>
+  <body>
+    <div id="quote"></div>
+
+    <button onclick="displayQuote()">Generate Quote</button>
+
+    <script>
+      const quotes = [
+        "Batasan satu-satunya untuk esok adalah keraguan kita hari ini.",
+        "Tujuan hidup kita adalah untuk bahagia.",
+        "Hidup adalah apa yang terjadi saat kita sibuk membuat rencana lain.",
+      ];
+
+      function displayQuote() {
+        const quote = quotes[Math.floor(Math.random() * quotes.length)];
+        const quoteContainer = document.getElementById("quote");
+        quoteContainer.innerHTML = quote;
+      }
+    </script>
+  </body>
+</html>
