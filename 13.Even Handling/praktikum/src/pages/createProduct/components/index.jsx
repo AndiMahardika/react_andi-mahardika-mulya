@@ -75,6 +75,14 @@ export default function CreateProduct() {
   const handleChangeText = () => {
     setLanguage(language === "en" ? "id" : "en")
   }
+
+  const handleDeleteProduct = () => {
+    const confirmDelete = confirm("Are you sure you want to delete last product?")
+    if(confirmDelete && products.length > 0) {
+      setProducts(products.slice(0, -1))
+    }
+    return false
+  }
   
   return (
     <>
@@ -112,7 +120,7 @@ export default function CreateProduct() {
             </div>
           </form>
         </div>
-        <ListProduct dataProducts={products} />
+        <ListProduct dataProducts={products} onDelete={handleDeleteProduct}/>
       </main>
     </>
   )

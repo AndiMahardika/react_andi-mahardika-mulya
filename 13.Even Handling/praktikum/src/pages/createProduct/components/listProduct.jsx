@@ -1,28 +1,17 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 export default function ListProduct(props) {
-  const { dataProducts } = props;
-  const [products, setProducts] = useState([]);
+  const { dataProducts, onDelete } = props;
   const [product, setProduct] = useState({});
   const [search, setSearch] = useState("");
   const [showAlert, setShowAlert] = useState(false);
-
-  useEffect(() => {
-    setProducts(dataProducts);
-  }, [dataProducts]);
-
-  function deleteProduct() {
-    products.pop()
-    const newProducts = [...products]
-    setProducts(newProducts)
-  }
 
   function searchProduct() {
     setShowAlert(true)
     if(search === "") {
       setProduct(null)
     } else {
-      const foundProduct = products.find(product => product.name.toLowerCase() === search.toLowerCase());
+      const foundProduct = dataProducts.find(product => product.name.toLowerCase() === search.toLowerCase());
       setProduct(foundProduct)
     }
   }
@@ -44,12 +33,12 @@ export default function ListProduct(props) {
             </div>
             <img src="{product.image}" className="rounded-3 mt-2 mt-md-0" alt="Product Image" width="130px" />
           </div>
-          <button type="button" className="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          <button type="button" className="btn-close" aria-label="Close" onClick={() => setShowAlert(false)}></button>
         </div>
         ) : (
           <div className="alert alert-danger alert-dismissible fade show col-md-9 col-lg-6 col-12 mx-auto" role="alert">
             <strong>Product not found</strong>
-            <button type="button" className="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            <button type="button" className="btn-close" aria-label="Close" onClick={() => setShowAlert(false)}></button>
           </div>
         )}
       </div>
@@ -71,7 +60,7 @@ export default function ListProduct(props) {
               </tr>
             </thead>
             <tbody id="tableProduct">
-              {products && products.map((product, index) => (
+              {dataProducts && dataProducts.map((product, index) => (
                 <tr className="align-middle" key={product.id}>
                   <th scope="row">{index + 1}</th>
                   <td>{product.name}</td>
@@ -107,7 +96,7 @@ export default function ListProduct(props) {
               data-bs-toggle="tooltip" 
               data-bs-placement="right" 
               title="Delete last Product"
-              onClick={deleteProduct}
+              onClick={onDelete}
             >
               Deletion
             </button>
