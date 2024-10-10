@@ -64,11 +64,11 @@ export default function CreateProduct() {
     }
 
     if(productNameValue.length > 25) {
-      alert("Last Name must not exceed 25 characters.")
+      alert("Product must not exceed 25 characters.")
     }
 
     if(productNameValue.length > 10) {
-      alert("Last Name must not exceed 10 characters.")
+      alert("Product must not exceed 10 characters.")
     }
   }
 
