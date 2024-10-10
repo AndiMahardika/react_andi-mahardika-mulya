@@ -55,3 +55,8 @@ function Welcome(props) {
         );
     }
     ```
+
+### 5. Directory structure
+- Kelompokkan file berdasarkan fitur atau rute.
+- Kelompokkan file berdasarkan jenisnya.
+- Hindari membuat terlalu banyak folder di dalam folder (nesting).
