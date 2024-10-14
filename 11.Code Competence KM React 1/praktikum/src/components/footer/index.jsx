@@ -10,14 +10,14 @@ export default function Footer() {
       <div className="">
         <h3 className="font-bold text-xl text-blue-700 mb-5">HomeSpace</h3>
         <div className="text-base font-normal mb-7">
-          <p>123 Main Street</p>
-          <p>City, State 12345</p>
-          <p>USA</p>
+          <p>Jalan Merpati No.87 A</p>
+          <p>Yogyakarta, Depok Sleman</p>
+          <p>Indonesia</p>
         </div>
 
         <div>
-          <p className="text-base font-normal"><span className="font-bold">Phone:</span> 123-456-7890</p>
-          <p className="text-base font-normal"><span className="font-bold">Email:</span> 6JpP3@example.com</p>
+          <p className="text-base font-normal"><span className="font-bold">Phone:</span> 0858-5139-3874</p>
+          <p className="text-base font-normal"><span className="font-bold">Email:</span> andi.mahardika.mulya@gmail.com</p>
         </div>
       </div>
 

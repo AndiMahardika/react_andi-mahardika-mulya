@@ -1,4 +1,5 @@
 import Button from "../ui/button";
+import images from "../../assets/images";
 
 export default function Hero() {
   return (
@@ -12,10 +13,9 @@ export default function Hero() {
         </div>
       </div>
       <div className="grid grid-cols-2 gap-4">
-        <img className="rounded-3xl object-cover" src="src\assets\house.jpg" alt="" />
-        <img className="rounded-3xl object-cover" src="src\assets\house.jpg" alt="" />
-        {/* <img className="col-span-2 rounded-3xl object-cover" src="src\assets\house-3.jpg" alt="" /> */}
-        <img className="col-span-2 rounded-3xl object-cover h-72 w-full" src="https://i.pinimg.com/736x/31/c5/19/31c51965559ad1c8e6efcb2f014b6455.jpg" alt="" />
+        <img className="rounded-3xl object-cover" src={images.landingpage1} alt="" />
+        <img className="rounded-3xl object-cover" src={images.landingpage2} alt="" />
+        <img className="col-span-2 rounded-3xl object-cover" src={images.landingpage3} alt="" />
       </div>
     </section>
   )

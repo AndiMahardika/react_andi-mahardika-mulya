@@ -1,4 +1,6 @@
 import { Link } from "react-router-dom";
+import NavItem from "./nav.item";
+import icons from "../../assets/icon";
 
 export default function Navbar() {
   return (
@@ -6,7 +8,7 @@ export default function Navbar() {
       <nav className="bg-white border-gray-200 border-b fixed w-full font-roboto">
         <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
           <a href="https://flowbite.com/" className="flex items-center space-x-3 rtl:space-x-reverse">
-              <img src="src\assets\logo.png" className="h-8" alt="logo" />
+              <img src={icons.logo} className="h-8" alt="logo" />
               <span className="self-center text-2xl font-semibold whitespace-nowrap text-blue-500">HomeSpace</span>
           </a>
           <button data-collapse-toggle="navbar-default" type="button" className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200" aria-controls="navbar-default" aria-expanded="false">
@@ -18,16 +20,16 @@ export default function Navbar() {
           <div className="hidden w-full md:block md:w-auto" id="navbar-default">
             <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white items-center">
               <li>
-                <a href="/" className="block py-2 px-3 rounded md:bg-transparent text-blue-500 md:p-0" aria-current="page">Home</a>
+                <NavItem link="/">Home</NavItem>
               </li>
               <li>
-                <Link to="/aboutus" className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0">About Us</Link>
+                <NavItem link="/aboutus">About Us</NavItem>
               </li>
               <li>
-                <a href="#" className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0">Services</a>
+                <NavItem link="/service">Service</NavItem>
               </li>
               <li>
-                <a href="#" className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0">Blog</a>
+                <NavItem link="/blog">Blog</NavItem>
               </li>
               <li className="w-full text-center md:w-auto">
                 <Link to="/#contact-us" className="block py-2 px-3 text-white rounded md:border-0 bg-blue-500 hover:bg-blue-600">Contact Us</Link>
