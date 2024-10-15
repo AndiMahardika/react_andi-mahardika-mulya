@@ -17,8 +17,7 @@ export default function Landingpage() {
       
       <section className="w-3/4 mx-auto py-10 px-32 text-center font-roboto">
         <p className="font-normal text-slate-500">
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry. Lorem Ipsum has been the industry&#39;s HomeSpace is your
+          Industry&#39;s HomeSpace is your
           ultimate online destination for discovering your dream home. We
           specialize in offering a curated selection of modern residential
           properties designed for comfort and convenience. Our user-friendly

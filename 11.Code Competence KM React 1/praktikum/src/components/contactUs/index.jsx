@@ -20,7 +20,7 @@ export default function ContactUs() {
 
   return (
     <>
-      <section className="bg-blue-200 py-14 font-roboto">
+      <section className="bg-blue-200 py-14 font-roboto" id="contact">
         <section className="text-center space-y-4 mb-14">
           <h3 className="text-3xl font-normal">Contact Us</h3>
           <p className="font-medium text-sm text-slate-500">Have questions? We&#39;re here to help! Reach out to us for inquiries or assistance.</p>

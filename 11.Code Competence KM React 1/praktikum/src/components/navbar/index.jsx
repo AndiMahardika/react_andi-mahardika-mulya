@@ -1,6 +1,6 @@
-import { Link } from "react-router-dom";
 import NavItem from "./nav.item";
 import icons from "../../assets/icon";
+import { Link } from "react-router-dom";
 
 export default function Navbar() {
   return (
@@ -32,7 +32,7 @@ export default function Navbar() {
                 <NavItem link="/blog">Blog</NavItem>
               </li>
               <li className="w-full text-center md:w-auto">
-                <Link to="/#contact-us" className="block py-2 px-3 text-white rounded md:border-0 bg-blue-500 hover:bg-blue-600">Contact Us</Link>
+                <Link to="/#contact" aria-label="Contact Us" className="block py-2 px-3 text-white rounded md:border-0 bg-blue-500 hover:bg-blue-600">Contact Us</Link>
               </li>
             </ul>
           </div>

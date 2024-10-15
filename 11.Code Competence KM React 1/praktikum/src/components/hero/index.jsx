@@ -8,7 +8,9 @@ export default function Hero() {
         <h1 className="font-semibold text-[40px]">Welcome to <span className="text-blue-500">HomeSpace</span> where your journey to finding the perfect home begins.</h1>
         <p className="text-base font-normal text-slate-500">Discover your dream home with us. At HomeSpace, we’re here to help you find the perfect home that suits your lifestyle and needs. Explore a wide range of modern homes in prime locations, designed to offer you and your family the ultimate comfort and convenience.</p>
         <div className="flex space-x-4">
-          <Button>Contact Us</Button>
+          <Button>
+            <a href="#contact" aria-label="Contact Us">Contact Us</a>
+          </Button>
           <Button transparent>View more</Button>
         </div>
       </div>
