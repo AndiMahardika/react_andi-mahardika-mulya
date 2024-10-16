@@ -1,4 +1,4 @@
-import camera from '../assets/icon/cameraicon.png'
+import camera from '../assets/icon/familyIcon.png'
 import family from '../assets/icon/familyIcon.png'
 import house from '../assets/icon/houseIcon.png'
 import tree from '../assets/icon/treeIcon.png'
