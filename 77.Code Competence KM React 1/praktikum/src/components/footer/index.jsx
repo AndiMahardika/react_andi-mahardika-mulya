@@ -2,6 +2,7 @@ import { faXTwitter } from "@fortawesome/free-brands-svg-icons";
 import { faInstagram } from "@fortawesome/free-brands-svg-icons";
 import { faFacebook } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Link } from "react-router-dom";
 
 export default function Footer() {
   return (
@@ -24,30 +25,30 @@ export default function Footer() {
       <div className="">
         <h3 className="font-bold text-xl text-blue-700 mb-5">Usefull Links</h3>
         <ul className="text-base font-normal space-y-2">
-          <li><a className="hover:text-blue-700" href="">Home</a></li>
-          <li><a className="hover:text-blue-700" href="">About Us</a></li>
-          <li><a className="hover:text-blue-700" href="">Services</a></li>
-          <li><a className="hover:text-blue-700" href="">Blog</a></li>
-          <li><a className="hover:text-blue-700" href="">Contact Us</a></li>
+          <li><Link className="hover:text-blue-700" to="">Home</Link></li>
+          <li><Link className="hover:text-blue-700" to="">About Us</Link></li>
+          <li><Link className="hover:text-blue-700" to="">Services</Link></li>
+          <li><Link className="hover:text-blue-700" to="">Blog</Link></li>
+          <li><Link className="hover:text-blue-700" to="">Contact Us</Link></li>
         </ul>
       </div>
 
       <div>
         <h3 className="font-bold text-xl text-blue-700 mb-5">Our Services</h3>
         <ul className="text-base font-normal space-y-2">
-          <li><a className="hover:text-blue-700" href="">Home Design</a></li>
-          <li><a className="hover:text-blue-700" href="">Complete Amenities</a></li>
-          <li><a className="hover:text-blue-700" href="">Safe & Comfortable Environment</a></li>
-          <li><a className="hover:text-blue-700" href="">Security and Comfort</a></li>
-          <li><a className="hover:text-blue-700" href="">Competitive Pricing</a></li>
+          <li><Link className="hover:text-blue-700" to="">Home Design</Link></li>
+          <li><Link className="hover:text-blue-700" to="">Complete Amenities</Link></li>
+          <li><Link className="hover:text-blue-700" to="">Safe & Comfortable Environment</Link></li>
+          <li><Link className="hover:text-blue-700" to="">Security and Comfort</Link></li>
+          <li><Link className="hover:text-blue-700" to="">Competitive Pricing</Link></li>
         </ul>
       </div>
 
       <div className="flex flex-col-reverse pb-4">
         <ul className="flex gap-4">
-          <li><a className="" href=""><FontAwesomeIcon icon={faFacebook} size="2xl" style={{color: "#0673c6",}} /></a></li>
-          <li><a className="" href=""><FontAwesomeIcon icon={faXTwitter} size="2xl" style={{color: "#000000",}} /></a></li>
-          <li><a className="" href=""><FontAwesomeIcon icon={faInstagram} size="2xl" style={{color: "#e90101",}} /></a></li>
+          <li><Link className="" to="https://www.facebook.com/andi.m.mulya.90"><FontAwesomeIcon icon={faFacebook} size="2xl" style={{color: "#0673c6",}} /></Link></li>
+          <li><Link className="" to="https://x.com/AndiStudents"><FontAwesomeIcon icon={faXTwitter} size="2xl" style={{color: "#000000",}} /></Link></li>
+          <li><Link className="" to="https://www.instagram.com/andimahardikamulya_/"><FontAwesomeIcon icon={faInstagram} size="2xl" style={{color: "#e90101",}} /></Link></li>
         </ul>
       </div>
     </section>

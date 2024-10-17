@@ -79,10 +79,10 @@ export default function ContactUs() {
                         <th scope="row" className="px-6 py-4 font-medium text-blue-600 whitespace-nowrap">
                           {contact.firstName}
                         </th>
-                        <td className="px-6 py-4">
+                        <td className="px-6 py-4 whitespace-nowrap">
                           {contact.lastName}
                         </td>
-                        <td className="px-6 py-4">
+                        <td className="px-6 py-4 whitespace-nowrap">
                           {contact.email}
                         </td>
                         <td className="px-6 py-4">
