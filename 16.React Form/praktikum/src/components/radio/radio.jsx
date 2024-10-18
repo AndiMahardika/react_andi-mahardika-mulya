@@ -3,7 +3,7 @@ export default function Radio(props) {
 
   return (
     <>
-      <div className="col-6">
+      <div className="col-6 mb-4">
         <label htmlFor={label} className="form-label">
           {label}
         </label>

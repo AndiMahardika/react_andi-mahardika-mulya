@@ -23,7 +23,7 @@ export default function DetailComponent() {
           <div className="container mx-auto mt-5 pt-5 d-flex flex-column justify-content-center align-items-center gap-4">
             <h2>Product Detail</h2>
             <div className="d-flex border border-primary w-50 align-items-center p-3 gap-3">
-              <img src="https://i.pinimg.com/enabled_lo/564x/61/0e/f8/610ef8d775aae1e0b1a63c224b2be526.jpg" alt="" className="img-fluid" style={{width: "200px"}}/>
+              <img src={product.image} alt="" style={{width: "200px"}} />
               <div>
                 <p>Name : {product.name}</p>
                 <p>Category: {product.category}</p> 

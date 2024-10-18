@@ -21,10 +21,13 @@ export default function ListProduct({products, onDelete}) {
       {showAlert && (
         <div className="row px-2" id="searchAlert">
         {product ? (
-          <div className="alert alert-success alert-dismissible fade show col-md-9 col-lg-4 col-10 mx-auto" role="alert">
+          <div className="alert alert-success alert-dismissible fade show col-md-9 col-lg-5 col-10 mx-auto" role="alert">
           <h5 className="text-center">Product Found</h5>
           <hr />
-          <div className="d-md-flex align-items-center justify-content-evenly">
+          <div className="d-md-flex align-items-center justify-content-evenly gap-3">
+            <div>
+              <img src={product.image} alt="" className="" style={{width: "200px"}} />
+            </div>
             <div>
               <strong>Product Name:</strong> {product.name} <br />
               <strong>Product Category:</strong> {product.category} <br />
@@ -52,6 +55,7 @@ export default function ListProduct({products, onDelete}) {
                 <th scope="col">No</th>
                 <th scope="col">Product Name</th>
                 <th scope="col">Product Category</th>
+                <th scope="col">Product Image</th>
                 <th scope="col">Product Freshness</th>
                 <th scope="col">Product Price</th>
                 <th scope="col">Action</th>
@@ -63,6 +67,9 @@ export default function ListProduct({products, onDelete}) {
                   <th scope="row">{product.id}</th>
                   <td>{product.name}</td>
                   <td>{product.category}</td>
+                  <td>
+                    <img src={product.image} alt="" className="rounded" style={{width: "200px"}} />
+                  </td>
                   <td>{product.freshness}</td>
                   <td>${product.price}</td>
                   <td>
