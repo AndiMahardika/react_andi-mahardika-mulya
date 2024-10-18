@@ -4,7 +4,7 @@ import Select from "../../../components/select/select";
 import Radio from "../../../components/radio/radio";
 import Button from "../../../components/button/button";
 import ListProduct from "./listProduct";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import Hero from "../../../components/hero";
 import article from "./article";
 
