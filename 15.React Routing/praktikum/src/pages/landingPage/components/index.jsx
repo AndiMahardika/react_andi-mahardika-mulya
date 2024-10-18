@@ -1,5 +1,7 @@
+import Footer from "../../../components/footer/index.jsx";
 import HeroLandingPage from "../../../components/hero/landingPage.jsx";
 import Navbar from "../../../components/navbar/navbar.jsx";
+import "../../../index.css"
 
 export default function LandingPage() {
   return (
@@ -20,6 +22,8 @@ export default function LandingPage() {
           </div>
         </div>
       </div>
+
+      <Footer/>
     </>
   )
 }

@@ -29,6 +29,13 @@ export default function CreateProduct() {
   const [productName, setProductName] = useState("")
   const [language, setLanguage] = useState("en")
 
+  useEffect(() => {
+    const storedProducts = localStorage.getItem("products");
+    if (storedProducts) {
+      setProducts(JSON.parse(storedProducts));
+    }
+  }, []);
+
   function handleSubmit(e) {
     e.preventDefault()
 
@@ -43,6 +50,7 @@ export default function CreateProduct() {
     }
 
     setProducts([...products, newProduct])
+    localStorage.setItem("products", JSON.stringify([...products, newProduct]))
   }
 
   function generateUUID() {
@@ -61,10 +69,6 @@ export default function CreateProduct() {
       alert("Please enter a valid product name.")
     }
 
-    if(productNameValue.length > 25) {
-      alert("Last Name must not exceed 25 characters.")
-    }
-
     if(productNameValue.length > 10) {
       alert("Last Name must not exceed 10 characters.")
     }
@@ -74,13 +78,13 @@ export default function CreateProduct() {
     setLanguage(language === "en" ? "id" : "en")
   }
 
-  const handleDeleteProduct = (id) => {
-    const confirmDelete = confirm("Are you sure you want to delete this product?")
-    if(confirmDelete) {
-      const newProducts = products.filter(product => product.id !== id)
-      setProducts(newProducts)
-    } 
-    return false
+  function handleDeleteProduct(id) {
+    const confirmDelete = confirm("Are you sure you want to delete this product?");
+    if (confirmDelete) {
+      const updatedProducts = products.filter((product) => product.id !== id);
+      setProducts(updatedProducts);
+      localStorage.setItem("products", JSON.stringify(updatedProducts));
+    }
   }
   
   return (
@@ -108,7 +112,7 @@ export default function CreateProduct() {
             </div>
           </form>
         </div>
-        <ListProduct dataProducts={products} onDelete={handleDeleteProduct} />
+        <ListProduct products={products} onDelete={handleDeleteProduct}/>
       </main>
     </>
   )

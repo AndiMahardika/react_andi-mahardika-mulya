@@ -12,7 +12,7 @@ export default function Navbar() {
         <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div className="navbar-nav ms-auto gap-3 me-lg-5">
             <Link className="btn btn-primary mt-2 mt-lg-0" to="/" role="button">Home</Link>
-            <Link className="nav-link" to="/create-product">Create Product</Link>
+            <Link className="nav-link" to="/product">Create Product</Link>
             <Link className="nav-link" to="#">Features</Link>
             <Link className="nav-link" to="#">Pricing</Link>
             <Link className="nav-link" to="#">FAQs</Link>

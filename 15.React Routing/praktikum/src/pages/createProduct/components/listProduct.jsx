@@ -1,7 +1,7 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
-export default function ListProduct(props) {
-  const { dataProducts, onDelete } = props;
+export default function ListProduct({products, onDelete}) {
   const [search, setSearch] = useState("");
   const [showAlert, setShowAlert] = useState(false);
   const [product, setProduct] = useState(null);
@@ -11,7 +11,7 @@ export default function ListProduct(props) {
     if(search === "") {
       setProduct(null)
     } else {
-      const foundProduct = dataProducts.find(product => product.name.toLowerCase() === search.toLowerCase());
+      const foundProduct = products.find(product => product.name.toLowerCase() === search.toLowerCase());
       setProduct(foundProduct) 
     }
   }
@@ -44,7 +44,7 @@ export default function ListProduct(props) {
       )}
 
       <h2 className="text-center">List of Products</h2>
-      <div className="row overflow-auto mb-2">
+      <div className="row overflow-auto mb-2 mx-auto">
         <div className="col-12">
           <table className="table table-striped">
             <thead>
@@ -58,7 +58,7 @@ export default function ListProduct(props) {
               </tr>
             </thead>
             <tbody id="tableProduct">
-              {dataProducts && dataProducts.map((product, index) => (
+              {products && products.map((product) => (
                 <tr className="align-middle" key={product.id}>
                   <th scope="row">{product.id}</th>
                   <td>{product.name}</td>
@@ -66,7 +66,10 @@ export default function ListProduct(props) {
                   <td>{product.freshness}</td>
                   <td>${product.price}</td>
                   <td>
-                    <button className="btn btn-md btn-danger" onClick={() => onDelete(product.id)}>Delete</button>
+                    <Link to={`/product/detail/${product.id}`} className="btn btn-md btn-primary">
+                      Detail
+                    </Link>
+                    <button className="btn btn-md btn-danger mx-2" onClick={() => onDelete(product.id)}>Delete</button>
                     <button className="btn btn-md btn-success">Edit</button>
                   </td>
                 </tr>
