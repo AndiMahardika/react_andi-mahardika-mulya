@@ -8,6 +8,8 @@ import { generateUUID, validateProductCategory, validateProductFreshness, valida
 
 export default function CreateProduct() {
   const [products, setProducts] = useState([])
+  const [errors, setErrors] = useState({})
+  const [isValid, setIsValid] = useState(false)
 
   useEffect(() => {
     const storedProducts = localStorage.getItem("products");
@@ -25,33 +27,50 @@ export default function CreateProduct() {
     const category = formData.get("productCategory");
     const imageFile = formData.get("productImage");
     const freshness = formData.get("productFreshness");
+    const description = formData.get("additionalDescription")
     const price = formData.get("productPrice");
 
-    console.log(imageFile)
-
+    let newErrors = {
+      productName: "",
+      productCategory: "",
+      productImage: "",
+      productFreshness: "",
+      productPrice: "",
+    };
+  
     // validation
+    let isValid = true;
     if (!validateProductName(name)) {
-      alert("Product name must be between 3 to 10 characters long and contain only letters and spaces.");
-      return;
+      newErrors.productName = "Product name must be 3-10 characters long and contain only letters and numbers.";
+      isValid = false;
     }
 
     if (!validateProductCategory(category)) {
-      alert("Please select a valid product category.");
-      return;
+      newErrors.productCategory = "Please select a valid product category.";
+      isValid = false;
     }
 
     if (!validateProductFreshness(freshness)) {
-      alert("Please select a valid product freshness option.");
-      return;
+      newErrors.productFreshness = "Please select a valid product freshness option.";
+      isValid = false;
     }
 
     if (!validateProductPrice(price)) {
-      alert("Price must be a valid positive number.");
-      return;
+      newErrors.productPrice = "Price must be a valid positive number.";
+      isValid = false;
     }
 
-    if(!validateProductImage(imageFile)){
-      alert("Please upload a valid image file (JPG, JPEG, or PNG).");
+    console.log(imageFile.name)
+    if (!validateProductImage(imageFile.name)) {
+      newErrors.productImage = "Please upload a valid image file (JPG, JPEG, or PNG).";
+      isValid = false;
+    }
+
+    setErrors(newErrors);
+    setIsValid(isValid);
+
+    if(!isValid) {
+      console.log("!isValid", isValid)
       return;
     }
 
@@ -67,13 +86,16 @@ export default function CreateProduct() {
       category,
       image,
       freshness,
+      description,
       price
     }
 
+    console.log(products)
     setProducts([...products, newProduct])
     localStorage.setItem("products", JSON.stringify([...products, newProduct]))
 
     e.target.reset();
+    setErrors({});
   }
 
   function handleDeleteProduct(id) {
@@ -91,7 +113,7 @@ export default function CreateProduct() {
       <main>
         <div className="container">
           <Hero article={article} />
-          <FormProduct handleSubmit={handleSubmit}/>
+          <FormProduct handleSubmit={handleSubmit} errors={errors}/>
         </div>
         <ListProduct products={products} onDelete={handleDeleteProduct}/>
       </main>

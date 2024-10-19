@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 export default function Textarea(props) {
   const { label, placeholder, id, row } = props;
 
@@ -13,7 +14,6 @@ export default function Textarea(props) {
           rows={row}
           placeholder={placeholder}
           name={id}
-          required
         ></textarea>
         <div className="valid-feedback">Looks good!</div>
         <div className="invalid-feedback">Please fill out this field.</div>

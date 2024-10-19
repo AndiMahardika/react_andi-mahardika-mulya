@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
@@ -57,6 +58,7 @@ export default function ListProduct({products, onDelete}) {
                 <th scope="col">Product Category</th>
                 <th scope="col">Product Image</th>
                 <th scope="col">Product Freshness</th>
+                <th scope="col">Product Description</th>
                 <th scope="col">Product Price</th>
                 <th scope="col">Action</th>
               </tr>
@@ -71,6 +73,7 @@ export default function ListProduct({products, onDelete}) {
                     <img src={product.image} alt="" className="rounded" style={{width: "200px"}} />
                   </td>
                   <td>{product.freshness}</td>
+                  <td>{product.description}</td>
                   <td>${product.price}</td>
                   <td>
                     <Link to={`/product/detail/${product.id}`} className="btn btn-md btn-primary">

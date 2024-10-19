@@ -23,6 +23,7 @@ export function validateProductPrice(price) {
 }
 
 export function validateProductImage(image){
-  const regex = /^(.*\.(jpg|jpeg|png))$/i;
+  const regex = /\.(jpg|jpeg|png)$/i;
+  console.log('regex', image)
   return regex.test(image);
 }
