@@ -1,34 +1,30 @@
+/* eslint-disable no-unused-vars */
 import Navbar from "../../../components/navbar/navbar";
 import ListProduct from "./listProduct";
-import { useEffect, useState } from "react";
 import Hero from "../../../components/hero";
 import article from "../article.js";
 import FormProduct from "./formProduct.jsx";
 import { generateUUID, validateProductCategory, validateProductFreshness, validateProductImage, validateProductName, validateProductPrice } from "../utils/utils.js";
+import { useState } from "react";
+import useProduct from "../../../stores/productStore.js";
 
 export default function CreateProduct() {
-  const [products, setProducts] = useState([])
   const [errors, setErrors] = useState({})
   const [isValid, setIsValid] = useState(false)
 
-  useEffect(() => {
-    const storedProducts = localStorage.getItem("products");
-    if (storedProducts) {
-      setProducts(JSON.parse(storedProducts));
-    }
-  }, []);
+  const addProduct = useProduct((state) => state.addProduct)
 
   async function handleSubmit(e) {
     e.preventDefault()
 
     const formData = new FormData(e.target)
 
-    const name = formData.get("productName");
-    const category = formData.get("productCategory");
+    const productName = formData.get("productName");
+    const productCategory = formData.get("productCategory");
     const imageFile = formData.get("productImage");
-    const freshness = formData.get("productFreshness");
-    const description = formData.get("additionalDescription")
-    const price = formData.get("productPrice");
+    const productFreshness = formData.get("productFreshness");
+    const productDescription = formData.get("additionalDescription")
+    const productPrice = formData.get("productPrice");
 
     let newErrors = {
       productName: "",
@@ -40,27 +36,26 @@ export default function CreateProduct() {
   
     // validation
     let isValid = true;
-    if (!validateProductName(name)) {
+    if (!validateProductName(productName)) {
       newErrors.productName = "Product name must be 3-10 characters long and contain only letters and numbers.";
       isValid = false;
     }
 
-    if (!validateProductCategory(category)) {
-      newErrors.productCategory = "Please select a valid product category.";
+    if (!validateProductCategory(productCategory)) {
+      newErrors.productCategory = "Please select a product category.";
       isValid = false;
     }
 
-    if (!validateProductFreshness(freshness)) {
+    if (!validateProductFreshness(productFreshness)) {
       newErrors.productFreshness = "Please select a valid product freshness option.";
       isValid = false;
     }
 
-    if (!validateProductPrice(price)) {
+    if (!validateProductPrice(productPrice)) {
       newErrors.productPrice = "Price must be a valid positive number.";
       isValid = false;
     }
 
-    console.log(imageFile.name)
     if (!validateProductImage(imageFile.name)) {
       newErrors.productImage = "Please upload a valid image file (JPG, JPEG, or PNG).";
       isValid = false;
@@ -82,29 +77,18 @@ export default function CreateProduct() {
 
     const newProduct = {
       id: generateUUID(),
-      name,
-      category,
-      image,
-      freshness,
-      description,
-      price
+      productName,
+      productCategory,
+      productImage: image,
+      productFreshness,
+      productDescription,
+      productPrice,
     }
 
-    console.log(products)
-    setProducts([...products, newProduct])
-    localStorage.setItem("products", JSON.stringify([...products, newProduct]))
+    addProduct(newProduct)
 
     e.target.reset();
     setErrors({});
-  }
-
-  function handleDeleteProduct(id) {
-    const confirmDelete = confirm("Are you sure you want to delete this product?");
-    if (confirmDelete) {
-      const updatedProducts = products.filter((product) => product.id !== id);
-      setProducts(updatedProducts);
-      localStorage.setItem("products", JSON.stringify(updatedProducts));
-    }
   }
   
   return (
@@ -115,7 +99,7 @@ export default function CreateProduct() {
           <Hero article={article} />
           <FormProduct handleSubmit={handleSubmit} errors={errors}/>
         </div>
-        <ListProduct products={products} onDelete={handleDeleteProduct}/>
+        <ListProduct/>
       </main>
     </>
   )

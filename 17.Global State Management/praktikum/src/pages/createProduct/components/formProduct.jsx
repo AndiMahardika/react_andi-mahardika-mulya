@@ -6,7 +6,9 @@ import Select from "../../../components/select/select.jsx";
 import Radio from "../../../components/radio/radio.jsx";
 import Textarea from "../../../components/textarea/textarea.jsx";
 
-export default function FormProduct({ handleSubmit, errors }) {
+export default function FormProduct(props) {
+  const { handleSubmit, errors } = props
+
   return (
     <form
       onSubmit={handleSubmit}
@@ -24,11 +26,14 @@ export default function FormProduct({ handleSubmit, errors }) {
           col="6"
           error={errors.productName}
           isValid={!errors.productName}
+          required={true}
         />
         <Select
           caption="Product Category"
           options={productCategory}
           id="productCategory"
+          error={errors.productCategory}
+          isValid={!errors.productCategory}
         />
         <Input
           label="Prodcut Image"
@@ -38,6 +43,7 @@ export default function FormProduct({ handleSubmit, errors }) {
           accept=".jpg, .jpeg, .png"
           error={errors.productImage}
           isValid={!errors.productImage}
+          required={true}
         />
         <Radio
           label="Product Freshness"
@@ -53,6 +59,7 @@ export default function FormProduct({ handleSubmit, errors }) {
           col="12"
           error={errors.productPrice}
           isValid={!errors.productPrice}
+          required={true}
         />
         <div className="d-grid gap-2 px-4 mb-3">
           <Button type="submit" color="primary">

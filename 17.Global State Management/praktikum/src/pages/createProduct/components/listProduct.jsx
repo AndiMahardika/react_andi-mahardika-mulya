@@ -1,22 +1,118 @@
-/* eslint-disable react/prop-types */
+/* eslint-disable no-unused-vars */
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import useProduct from "../../../stores/productStore.js";
+import FormUpdateProduct from "./formUpdateProduct.jsx";
+import { validateProductCategory, validateProductImage, validateProductName, validateProductPrice } from "../utils/utils.js";
 
-export default function ListProduct({products, onDelete}) {
+// export default function ListProduct({products, onDelete}) {
+export default function ListProduct() {
+  // zustand
+  const products = useProduct((state) => state.products)
+  const deleteProduct = useProduct((state) => state.deleteProduct)
+  const updateProduct = useProduct((state) => state.updateProduct)
+
+  // state
   const [search, setSearch] = useState("");
   const [showAlert, setShowAlert] = useState(false);
   const [product, setProduct] = useState(null);
+
+  const [errors, setErrors] = useState({})
+  const [isValid, setIsValid] = useState(false)
 
   function searchProduct() {
     setShowAlert(true)
     if(search === "") {
       setProduct(null)
     } else {
-      const foundProduct = products.find(product => product.name.toLowerCase() === search.toLowerCase());
+      const foundProduct = products.find(product => product.productName.toLowerCase() === search.toLowerCase());
       setProduct(foundProduct) 
     }
   }
-  
+
+  const handleDelete = (id) => {
+    const confirmDelete = confirm("Are you sure you want to delete this product?");
+    if(!confirmDelete) return
+    deleteProduct(id)
+  }
+
+  async function handleUpdate(e) {
+    e.preventDefault()
+    const formData = new FormData(e.target)
+
+    const id = formData.get("id")
+    const productName = formData.get("productName");
+    const productCategory = formData.get("productCategory");
+    const imageFile = formData.get("productImage");
+    const productFreshness = formData.get("productFreshnessUpdate");
+    const productDescription = formData.get("additionalDescription")
+    const productPrice = formData.get("productPrice");
+
+    let newErrors = {
+      productName: "",
+      productCategory: "",
+      productImage: "",
+      productFreshness: "",
+      productPrice: "",
+    };
+
+    // validation
+    let isValid = true;
+    if (!validateProductName(productName)) {
+      newErrors.productName = "Product name must be 3-10 characters long and contain only letters and numbers.";
+      isValid = false;
+    }
+
+    if (!validateProductCategory(productCategory)) {
+      newErrors.productCategory = "Please select a valid product category.";
+      isValid = false;
+    }
+
+    if (!validateProductPrice(productPrice)) {
+      newErrors.productPrice = "Price must be a valid positive number.";
+      isValid = false;
+    }
+
+    let productImage = product.productImage; 
+    if (imageFile.name !== "") {
+      if (!validateProductImage(imageFile.name)) {
+        newErrors.productImage = "Please upload a valid image file (JPG, JPEG, or PNG).";
+        isValid = false;
+      }
+
+      productImage = await new Promise((resolve) => {
+        const reader = new FileReader();
+        reader.onloadend = () => resolve(reader.result);
+        reader.readAsDataURL(imageFile);
+      });
+    }
+
+    setErrors(newErrors);
+    setIsValid(isValid);
+
+    if(!isValid) {
+      alert("Product update failed! Please check your input and try again.")
+      return;
+    }
+    
+    const updatedProduct = {
+      id,
+      productName,
+      productCategory,
+      productImage,
+      productFreshness,
+      productDescription,
+      productPrice
+    }
+
+    updateProduct(id, updatedProduct)
+
+    alert("Product updated successfully!")
+
+    e.target.reset();
+    setErrors({});
+  }
+
   return (
     <div className="container-fluid">
       {showAlert && (
@@ -27,13 +123,13 @@ export default function ListProduct({products, onDelete}) {
           <hr />
           <div className="d-md-flex align-items-center justify-content-evenly gap-3">
             <div>
-              <img src={product.image} alt="" className="" style={{width: "200px"}} />
+              <img src={product.productImage} alt="" className="" style={{width: "200px"}} />
             </div>
             <div>
-              <strong>Product Name:</strong> {product.name} <br />
-              <strong>Product Category:</strong> {product.category} <br />
-              <strong>Product Freshness:</strong> {product.freshness} <br />
-              <strong>Product Price:</strong> $ {product.price} <br />
+              <strong>Product Name:</strong> {product.productName} <br />
+              <strong>Product Category:</strong> {product.productCategory} <br />
+              <strong>Product Freshness:</strong> {product.productFreshness} <br />
+              <strong>Product Price:</strong> $ {product.productPrice} <br />
             </div>
           </div>
           <button type="button" className="btn-close" aria-label="Close" onClick={() => setShowAlert(false)}></button>
@@ -67,20 +163,20 @@ export default function ListProduct({products, onDelete}) {
               {products && products.map((product) => (
                 <tr className="align-middle" key={product.id}>
                   <th scope="row">{product.id}</th>
-                  <td>{product.name}</td>
-                  <td>{product.category}</td>
+                  <td>{product.productName}</td>
+                  <td>{product.productCategory}</td>
                   <td>
-                    <img src={product.image} alt="" className="rounded" style={{width: "200px"}} />
+                    <img src={product.productImage} alt="" className="rounded" style={{width: "200px"}} />
                   </td>
-                  <td>{product.freshness}</td>
-                  <td>{product.description}</td>
-                  <td>${product.price}</td>
+                  <td>{product.productFreshness}</td>
+                  <td>{product.productDescription}</td>
+                  <td>${product.productPrice}</td>
                   <td>
                     <Link to={`/product/detail/${product.id}`} className="btn btn-md btn-primary">
                       Detail
                     </Link>
-                    <button className="btn btn-md btn-danger mx-2" onClick={() => onDelete(product.id)}>Delete</button>
-                    <button className="btn btn-md btn-success">Edit</button>
+                    <button className="btn btn-md btn-danger mx-2" onClick={() => handleDelete(product.id)}>Delete</button>
+                    <button type="button" className="btn btn-md btn-success" data-bs-toggle="modal" data-bs-target="#editModal" onClick={() => setProduct(product)}>Edit</button>
                   </td>
                 </tr>
               ))}
@@ -111,6 +207,21 @@ export default function ListProduct({products, onDelete}) {
           </div>
         </div>
       </div>
+      
+      <div className="modal fade" id="editModal" tabIndex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+        <div className="modal-dialog">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h5 className="modal-title" id="editModalLabel">Edit Product</h5>
+              <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div className="modal-body">
+              {product && <FormUpdateProduct product={product} handleUpdate={handleUpdate} errors={errors} />}
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
   );
 }

@@ -1,5 +1,6 @@
+/* eslint-disable react/prop-types */
 export default function Radio(props) {
-  const { label, options, name } = props;
+  const { label, options, name, defaultValue= "" } = props;
 
   return (
     <>
@@ -13,16 +14,16 @@ export default function Radio(props) {
                 className="form-check-input"
                 type="radio"
                 name={name}
-                id={option.value}
+                id={option.id}
                 value={option.value}
+                defaultChecked={defaultValue === option.value}
                 required
               />
-              <label className="form-check-label" htmlFor={option.value}>
+              <label className="form-check-label" htmlFor={option.id}>
                 {option.label}
               </label>
             </div>
           ))}
-        
         <div className="valid-feedback">Looks good!</div>
         <div className="invalid-feedback">Please select product freshness.</div>
       </div>

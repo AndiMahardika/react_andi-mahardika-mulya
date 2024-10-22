@@ -1,5 +1,6 @@
+/* eslint-disable react/prop-types */
 export default function Select(props) {
-  const { options, caption, id } = props;
+  const { options, caption, id, defaultValue = "", error, isValid } = props;
 
   return (
     <>
@@ -8,13 +9,13 @@ export default function Select(props) {
           Product Category
         </label>
         <select
-          className="form-select"
+          className={`form-select ${!isValid ? "is-invalid" : ""}`}
           aria-label="Default select example"
           id={id}
           name={id}
-          required
+          defaultValue={defaultValue}
         >
-          <option defaultValue={""}>
+          <option value={""}>
             {caption}
           </option>
           {options.map((option) => (
@@ -23,8 +24,11 @@ export default function Select(props) {
             </option>
           ))}
         </select>
-        <div className="valid-feedback">Looks good!</div>
-        <div className="invalid-feedback">Please select a valid state.</div>
+        {!isValid && error && (
+          <div className="invalid-feedback">
+            {error}
+          </div>
+        )}
       </div>
     </>
   );

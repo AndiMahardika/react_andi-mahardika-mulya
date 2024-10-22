@@ -13,7 +13,7 @@ export function validateProductCategory(category) {
 }
 
 export function validateProductFreshness(freshness) {
-  const validFreshness = ["brand-new", "second-hank", "refurbished"];
+  const validFreshness = ["Brand New", "Second Hank", "Refurbished"];
   return validFreshness.includes(freshness);
 }
 
