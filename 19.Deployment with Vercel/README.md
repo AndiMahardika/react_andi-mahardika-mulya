@@ -19,3 +19,6 @@ Langkah-Langkah Deploy di Vercel
 2. Hubungkan repositori yang ingin di deploy
 3. Pilih repositori yang ingin dideploy dari daftar repositori.
 4. Klik tombol "Create" untuk memulai proses deployment dan tunggu hingga selesai.
+
+# Link Deploy Vercel
+https://deploy-react-andi.vercel.app/
