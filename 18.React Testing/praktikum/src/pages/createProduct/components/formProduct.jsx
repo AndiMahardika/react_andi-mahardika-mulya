@@ -36,7 +36,7 @@ export default function FormProduct(props) {
           isValid={!errors.productCategory}
         />
         <Input
-          label="Prodcut Image"
+          label="Product Image"
           type="file"
           id="productImage"
           col="5"

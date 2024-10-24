@@ -22,7 +22,7 @@ export default function Input(props) {
         </label>
         <input
           type={type}
-          className={`form-control ${!isValid ? "is-invalid" : ""}`}
+          className={`form-control ${isValid ? '' : 'is-invalid'}`}
           id={id}
           placeholder={placeholder}
           name={id}
@@ -32,7 +32,11 @@ export default function Input(props) {
           defaultValue={defaultValue}
           required={required}
         />
-        {!isValid && error && <div className="invalid-feedback">{error}</div>}
+        {!isValid && error && (
+          <div className="invalid-feedback">
+            {error}
+          </div>
+        )}
       </div>
     </>
   );

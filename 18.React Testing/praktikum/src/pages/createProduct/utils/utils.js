@@ -3,7 +3,7 @@ export function generateUUID() {
 }
 
 export function validateProductName(name) {
-  const regex = /^[A-Za-z0-9\s]{3,10}$/;
+  const regex = /^[A-Za-z0-9\s]{3,25}$/;
   return regex.test(name);
 }
 

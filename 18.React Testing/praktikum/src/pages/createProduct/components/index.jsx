@@ -37,7 +37,7 @@ export default function CreateProduct() {
     // validation
     let isValid = true;
     if (!validateProductName(productName)) {
-      newErrors.productName = "Product name must be 3-10 characters long and contain only letters and numbers.";
+      newErrors.productName = "Product name must be 3-25 characters long and contain only letters and numbers";
       isValid = false;
     }
 
