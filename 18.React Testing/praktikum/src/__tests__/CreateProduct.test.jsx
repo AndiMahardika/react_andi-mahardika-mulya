@@ -1,6 +1,6 @@
-/* eslint-disable no-undef */
 import { fireEvent, render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
+import { describe, expect } from "vitest";
 import CreateProduct from '../pages/createProduct/components/index.jsx';
 
 describe('CreateProduct', () => {
@@ -52,4 +52,5 @@ describe('CreateProduct', () => {
     fireEvent.change(productPriceInput, { target: { value: '123' } });
     expect(productPriceInput.value).toBe('123');
   });
+  
 });

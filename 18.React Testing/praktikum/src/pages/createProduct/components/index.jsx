@@ -4,7 +4,7 @@ import ListProduct from "./listProduct";
 import Hero from "../../../components/hero";
 import article from "../article.js";
 import FormProduct from "./formProduct.jsx";
-import { generateUUID, validateProductCategory, validateProductFreshness, validateProductImage, validateProductName, validateProductPrice } from "../utils/utils.js";
+import { convertCurrency, generateUUID, validateProductCategory, validateProductFreshness, validateProductImage, validateProductName, validateProductPrice } from "../utils/utils.js";
 import { useState } from "react";
 import useProduct from "../../../stores/productStore.js";
 
@@ -90,6 +90,13 @@ export default function CreateProduct() {
     e.target.reset();
     setErrors({});
   }
+
+  async function handleCurrencyConversion() {
+    const convertedAmount = await convertCurrency(100, "USD", "IDR");
+    console.log(convertedAmount); // This will print the converted amount.
+  }
+
+  handleCurrencyConversion()
   
   return (
     <>

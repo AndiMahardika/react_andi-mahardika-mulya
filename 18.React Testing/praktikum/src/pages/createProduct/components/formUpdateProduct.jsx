@@ -19,7 +19,6 @@ export default function FormUpdateProduct(props) {
         id="productName"
         col="12"
         defaultValue={product.productName}
-        required={true}
         error={errors.productName}
         isValid={!errors.productName}
       />

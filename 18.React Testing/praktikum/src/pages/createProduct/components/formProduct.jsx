@@ -26,7 +26,6 @@ export default function FormProduct(props) {
           col="6"
           error={errors.productName}
           isValid={!errors.productName}
-          required={true}
         />
         <Select
           caption="Product Category"

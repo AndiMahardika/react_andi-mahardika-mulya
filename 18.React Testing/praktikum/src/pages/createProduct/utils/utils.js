@@ -27,3 +27,22 @@ export function validateProductImage(image){
   console.log('regex', image)
   return regex.test(image);
 }
+
+export async function convertCurrency(amount, fromCurrency, toCurrency) {
+  try {
+    const response = await fetch(`https://api.exchangerate-api.com/v4/latest/${fromCurrency}`);
+
+    if (!response.ok) {
+      throw new Error(`Error fetching data: ${response.statusText}`);
+    }
+
+    const data = await response.json();
+
+    const convertedAmount = amount * data.rates[toCurrency];
+    return convertedAmount;
+
+  } catch (error) {
+    console.error('Error:', error);
+    return null;
+  }
+}

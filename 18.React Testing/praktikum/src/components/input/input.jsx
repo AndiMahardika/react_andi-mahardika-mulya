@@ -11,7 +11,6 @@ export default function Input(props) {
     isValid,
     error,
     defaultValue = "",
-    required = false,
   } = props;
 
   return (
@@ -30,7 +29,7 @@ export default function Input(props) {
           accept={accept}
           autoComplete="off"
           defaultValue={defaultValue}
-          required={required}
+          required
         />
         {!isValid && error && (
           <div className="invalid-feedback">
