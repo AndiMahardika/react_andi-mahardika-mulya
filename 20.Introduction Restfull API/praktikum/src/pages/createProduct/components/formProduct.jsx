@@ -7,7 +7,7 @@ import Radio from "../../../components/radio/radio.jsx";
 import Textarea from "../../../components/textarea/textarea.jsx";
 
 export default function FormProduct(props) {
-  const { handleSubmit, errors } = props
+  const { handleSubmit, errors, loading } = props
 
   return (
     <form
@@ -63,7 +63,7 @@ export default function FormProduct(props) {
         />
         <div className="d-grid gap-2 px-4 mb-3">
           <Button type="submit" color="primary">
-            Submit
+            {loading ? "loading ..." : "Submit"}
           </Button>
         </div>
       </div>

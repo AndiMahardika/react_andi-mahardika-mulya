@@ -7,7 +7,6 @@ import Textarea from "../../../components/textarea/textarea.jsx";
 
 export default function FormUpdateProduct(props) {
   const { handleUpdate, errors, product } = props;
-  // console.log("errors", errors.length > 0);
 
   return (
     <form action="" className="needs-validation" encType="multipart/form-data" onSubmit={handleUpdate}>

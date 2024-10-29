@@ -1,20 +1,7 @@
 import { create } from "zustand";
-import { persist, createJSONStorage } from "zustand/middleware";
 
-const useProduct = create(
-  persist((set) => ({
-    products: [
-      {
-        id: 123,
-        productName: "Laptop",
-        productCategory: "electronic",
-        productImage:
-          "https://i.pinimg.com/enabled_lo/564x/d0/70/07/d070075c1d5b8d094d43a36ea431d44c.jpg",
-        productFreshness: "Brand New",
-        productDescription: "test Product Description",
-        productPrice: 123,
-      },
-    ],
+const useProduct = create( (set) => ({
+    products: [],
     addProduct: (newProduct) =>
       set((state) => ({
         products: [...state.products, newProduct],
@@ -29,12 +16,7 @@ const useProduct = create(
           product.id == id ? updatedProduct : product
         ),
       })),
-  }), 
-  {
-    name: "product-store",
-    storage: createJSONStorage(() => localStorage),
-  }
-  )
-);
+    refreshProducts: (newProducts) => set({ products: newProducts }),
+}));
 
 export default useProduct;

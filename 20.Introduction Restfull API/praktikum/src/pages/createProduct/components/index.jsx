@@ -6,13 +6,13 @@ import article from "../article.js";
 import FormProduct from "./formProduct.jsx";
 import { generateUUID, validateProductCategory, validateProductFreshness, validateProductImage, validateProductName, validateProductPrice } from "../utils/utils.js";
 import { useState } from "react";
-import useProduct from "../../../stores/productStore.js";
+import { createProduct, uploadImage } from "../api/products.api.js";
+import axios from "axios";
 
 export default function CreateProduct() {
   const [errors, setErrors] = useState({})
   const [isValid, setIsValid] = useState(false)
-
-  const addProduct = useProduct((state) => state.addProduct)
+  const [loading, setLoading] = useState(false)
 
   async function handleSubmit(e) {
     e.preventDefault()
@@ -25,6 +25,8 @@ export default function CreateProduct() {
     const productFreshness = formData.get("productFreshness");
     const productDescription = formData.get("additionalDescription")
     const productPrice = formData.get("productPrice");
+
+    setLoading(true)
 
     let newErrors = {
       productName: "",
@@ -66,29 +68,29 @@ export default function CreateProduct() {
 
     if(!isValid) {
       console.log("!isValid", isValid)
+      setLoading(false)
       return;
     }
 
-    const image = await new Promise((resolve) => {
-      const reader = new FileReader();
-      reader.onloadend = () => resolve(reader.result);
-      reader.readAsDataURL(imageFile);
-    });
+    const productImageURL= await uploadImage(imageFile)
 
     const newProduct = {
       id: generateUUID(),
       productName,
       productCategory,
-      productImage: image,
+      productImage: productImageURL,
       productFreshness,
       productDescription,
       productPrice,
     }
 
-    addProduct(newProduct)
+    await createProduct(newProduct)
+
+    alert("Product success created!")
 
     e.target.reset();
     setErrors({});
+    setLoading(false)
   }
   
   return (
@@ -97,7 +99,7 @@ export default function CreateProduct() {
       <main>
         <div className="container">
           <Hero article={article} />
-          <FormProduct handleSubmit={handleSubmit} errors={errors}/>
+          <FormProduct handleSubmit={handleSubmit} errors={errors} loading={loading}/>
         </div>
         <ListProduct/>
       </main>

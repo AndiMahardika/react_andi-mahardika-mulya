@@ -1,24 +1,35 @@
 /* eslint-disable no-unused-vars */
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import useProduct from "../../../stores/productStore.js";
 import FormUpdateProduct from "./formUpdateProduct.jsx";
 import { validateProductCategory, validateProductImage, validateProductName, validateProductPrice } from "../utils/utils.js";
+import { deleteProduct, getProducts, updateProduct, uploadImage } from "../api/products.api.js";
 
-// export default function ListProduct({products, onDelete}) {
 export default function ListProduct() {
   // zustand
   const products = useProduct((state) => state.products)
-  const deleteProduct = useProduct((state) => state.deleteProduct)
-  const updateProduct = useProduct((state) => state.updateProduct)
+  const refreshProducts = useProduct((state) => state.refreshProducts)
 
   // state
   const [search, setSearch] = useState("");
   const [showAlert, setShowAlert] = useState(false);
   const [product, setProduct] = useState(null);
-
   const [errors, setErrors] = useState({})
   const [isValid, setIsValid] = useState(false)
+  const [loading, setLoading] = useState(false)
+
+  // Fetch data
+  useEffect(() => {
+    const fetchProducts = async () => {
+      setLoading(true)
+      const data = await getProducts();
+      refreshProducts(data); 
+      setLoading(false)
+    };
+
+    fetchProducts();
+  }, [refreshProducts]);
 
   function searchProduct() {
     setShowAlert(true)
@@ -28,12 +39,6 @@ export default function ListProduct() {
       const foundProduct = products.find(product => product.productName.toLowerCase() === search.toLowerCase());
       setProduct(foundProduct) 
     }
-  }
-
-  const handleDelete = (id) => {
-    const confirmDelete = confirm("Are you sure you want to delete this product?");
-    if(!confirmDelete) return
-    deleteProduct(id)
   }
 
   async function handleUpdate(e) {
@@ -80,11 +85,7 @@ export default function ListProduct() {
         isValid = false;
       }
 
-      productImage = await new Promise((resolve) => {
-        const reader = new FileReader();
-        reader.onloadend = () => resolve(reader.result);
-        reader.readAsDataURL(imageFile);
-      });
+      productImage = await uploadImage(imageFile)
     }
 
     setErrors(newErrors);
@@ -160,6 +161,14 @@ export default function ListProduct() {
               </tr>
             </thead>
             <tbody id="tableProduct">
+              {loading && (
+                <>
+                <tr>
+                  <td colSpan="7" >data loading...</td>
+                </tr>
+                </>
+              )}
+
               {products && products.map((product) => (
                 <tr className="align-middle" key={product.id}>
                   <th scope="row">{product.id}</th>
@@ -175,7 +184,7 @@ export default function ListProduct() {
                     <Link to={`/product/detail/${product.id}`} className="btn btn-md btn-primary">
                       Detail
                     </Link>
-                    <button className="btn btn-md btn-danger mx-2" onClick={() => handleDelete(product.id)}>Delete</button>
+                    <button className="btn btn-md btn-danger mx-2" onClick={() => deleteProduct(product.id)}>Delete</button>
                     <button type="button" className="btn btn-md btn-success" data-bs-toggle="modal" data-bs-target="#editModal" onClick={() => setProduct(product)}>Edit</button>
                   </td>
                 </tr>
