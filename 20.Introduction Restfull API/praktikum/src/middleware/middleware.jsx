@@ -6,11 +6,7 @@ const Middleware = (props) => {
   const isLoggedIn = localStorage.getItem("isLogin")
   // console.log("Is Logged In:", isLoggedIn); 
 
-  if(!isLoggedIn){
-    return <Navigate to="/login" />
-  }
-
-  if(isLoggedIn.toLocaleLowerCase() == "true"){
+  if(isLoggedIn == "true"){
     return children
   }
 

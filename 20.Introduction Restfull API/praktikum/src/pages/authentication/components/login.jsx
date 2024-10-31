@@ -2,9 +2,24 @@ import { Link, useNavigate } from "react-router-dom";
 import AuthLayout from "./index.jsx";
 import { useFormik } from 'formik';
 import { loginSchema } from "../validation/auth.validation.js";
+import { useState } from "react";
 
 export default function Login() {
   const navigate = useNavigate();
+  const [isLogin, setIsLogin] = useState(true);
+
+  const handleLogin = (values) => {
+    const dummyUser = {
+      email: "admin@gmail.com",
+      password: "admin123"
+    }
+
+    if(values.email == dummyUser.email && values.password == dummyUser.password) {
+      localStorage.setItem("isLogin", true)
+      navigate("/product")
+    } 
+    setIsLogin(false)
+  }
 
   const formik = useFormik({
     initialValues: {
@@ -23,8 +38,7 @@ export default function Login() {
     },
     onSubmit: (values, {setSubmitting}) => {
       if(formik.isValid) {
-        localStorage.setItem('isLogin', 'true')
-        navigate('/product')
+        handleLogin(values)
       }
       setSubmitting(false)
     },
@@ -53,6 +67,7 @@ export default function Login() {
             <button type="submit" className="btn btn-primary">Login</button>
           </div>
         </form>
+        {!isLogin && <p className="fs-6 text-danger m-0 text-center">Invalid Credentials</p>}
         <p className="text-center"> Don&#39;t have an account ? <Link to="/register">Register</Link> </p>
       </div>
     </AuthLayout>
