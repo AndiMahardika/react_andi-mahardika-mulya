@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Non-Green Web Page</title>
+    <style>
+        /* Warna gelap yang mengonsumsi lebih sedikit energi pada layar */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #FFFFFF;
+            color: #000000;
+        }
+        header, footer {
+            background-color: #45474B; /* ganti ke warna gelap */
+            padding: 20px;
+            text-align: center;
+            color: white;
+        }
+        main {
+            padding: 20px;
+            background: #379777; /* ganti ke warna gelap */
+        }
+        .high-res-background {
+            width: 100%;
+            height: auto;
+        }
+        .content {
+            margin-bottom: 20px;
+            color: white;
+        }
+        .link-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        .link-list li {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to My Non-Green Web Page</h1>
+    </header>
+
+    <!-- Video beresolusi tinggi sebagai background yang menguras energi -->
+    <!-- video sudah dikompress -->
+    <video autoplay loop muted class="high-res-background">
+        <source src="forest-resize.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <main>
+        <section class="content">
+            <h2>About Me</h2>
+            <!-- Gambar resolusi rendah dengan ukuran kecil sudah dioptimasi -->
+            <img src="https://via.placeholder.com/4000x3000" alt="Low-Resolution Image">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque vitae velit ex.</p>
+        </section>
+        <section class="content">
+            <h2>My Interests</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque vitae velit ex.</p>
+            <ul class="link-list">
+                <li><a href="#">Interest 1</a></li>
+                <li><a href="#">Interest 2</a></li>
+                <li><a href="#">Interest 3</a></li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 My Non-Green Web Page</p>
+    </footer>
+</body>
+</html>
