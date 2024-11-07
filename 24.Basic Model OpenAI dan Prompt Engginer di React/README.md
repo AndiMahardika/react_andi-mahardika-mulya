@@ -4,7 +4,7 @@
 
 ### 2. Prompt Engineering adalah teknik untuk mengoptimalkan hasil dari model AI dengan memberikan prompt atau instruksi yang tepat. Teknik ini membantu AI menghasilkan output yang lebih akurat dan sesuai dengan kebutuhan.
 
-### Best Practices for Prompt Engineering: 
+### 3. Best Practices for Prompt Engineering: 
 - Prompt yang Relevan dengan Output : Pastikan prompt jelas dan spesifik sesuai dengan hasil yang ingin dicapai agar model AI dapat memahami konteks dan memberikan jawaban yang relevan.
 - Sertakan Contoh Keluaran yang Diinginkan: Menyediakan contoh output dapat membantu model AI memahami format dan gaya jawaban yang diharapkan, sehingga hasil yang diberikan lebih akurat.
 - Berikan Data dalam Jumlah yang Besar: Gunakan data yang memadai dan beragam untuk meningkatkan kemampuan AI mengenali pola dan memberikan jawaban yang konsisten.
